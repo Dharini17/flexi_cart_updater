@@ -4,11 +4,11 @@ import 'package:flexi_cart_updater/flexi_cart_updater.dart';
 
 void main() async {
 
-  flexi_cart.instance.initialize(
-      flexi_cart_icon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
-      flexi_badge_background: Colors.blue,
-      flexi_badge_foreground: Colors.white,
-      flexi_cart_count: 0);
+  flexiCart.instance.initialize(
+      flexiCartIcon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
+      flexiBadgeBackground: Colors.blue,
+      flexiBadgeForeground: Colors.white,
+      flexiCartCount: 0);
 
   runApp(const MyApp());
 }
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    flexi_cart.instance.update(newCartCount: 10);
+    flexiCart.instance.update(newCartCount: 10);
   }
 
   @override
@@ -71,15 +71,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
           children: <Widget>[
 
-            flexi_cart.instance.cart(onTap: (){
+            flexiCart.instance.cart(onTap: (){
 
             }),
-            
+
 
             ElevatedButton(
                 onPressed: (){
 
-                  flexi_cart.instance.add();
+                  flexiCart.instance.add();
 
                 },
                 child: Text("Add to Cart")
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: (){
 
-                  flexi_cart.instance.remove();
+                  flexiCart.instance.remove();
 
                 },
                 child: Text("Remove from Cart")

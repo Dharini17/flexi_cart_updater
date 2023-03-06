@@ -42,7 +42,7 @@ class _productlistState extends State<productlist> {
           children: <Widget>[
 
 
-            flexi_cart.instance.cart(onTap: (){
+            flexiCart.instance.cart(onTap: (){
 
             }),
 

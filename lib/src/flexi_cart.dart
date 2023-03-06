@@ -3,25 +3,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
-ValueNotifier<flexi_cart_controller> value_flexi_cart_controller = ValueNotifier<flexi_cart_controller>(flexi_cart_controller());
+ValueNotifier<flexiCart_controller> valueFlexiCartController = ValueNotifier<flexiCart_controller>(flexiCart_controller());
 
-class flexi_cart extends StatelessWidget {
+class flexiCart extends StatelessWidget {
 
-  static flexi_cart? _instance;
-  flexi_cart._();
-  static flexi_cart get instance => _instance ??= flexi_cart._();
+  static flexiCart? _instance;
+  flexiCart._();
+  static flexiCart get instance => _instance ??= flexiCart._();
 
-  initialize({required Icon? flexi_cart_icon,
-      required Color? flexi_badge_background,
-      required Color? flexi_badge_foreground,
-      required int? flexi_cart_count}){
+  initialize({required Icon? flexiCartIcon,
+      required Color? flexiBadgeBackground,
+      required Color? flexiBadgeForeground,
+      required int? flexiCartCount}){
 
-    value_flexi_cart_controller.value.flexi_cart_icon = flexi_cart_icon;
-    value_flexi_cart_controller.value.flexi_badge_background = flexi_badge_background;
-    value_flexi_cart_controller.value.flexi_badge_foreground = flexi_badge_foreground;
-    value_flexi_cart_controller.value.flexi_cart_count = flexi_cart_count;
+    valueFlexiCartController.value.flexiCartIcon = flexiCartIcon;
+    valueFlexiCartController.value.flexiBadgeBackground = flexiBadgeBackground;
+    valueFlexiCartController.value.flexiBadgeForeground = flexiBadgeForeground;
+    valueFlexiCartController.value.flexiCartCount = flexiCartCount;
 
-    value_flexi_cart_controller.notifyListeners();
+    valueFlexiCartController.notifyListeners();
   }
 
   @override
@@ -34,9 +34,9 @@ class flexi_cart extends StatelessWidget {
           child:
 
           ValueListenableBuilder(
-            valueListenable: value_flexi_cart_controller,
+            valueListenable: valueFlexiCartController,
             builder: (context, varCartValue, child) {
-              return value_flexi_cart_controller.value.flexi_cart_count == 0 ?
+              return valueFlexiCartController.value.flexiCartCount == 0 ?
 
                 _buildCart()
 
@@ -44,7 +44,7 @@ class flexi_cart extends StatelessWidget {
 
                 badges.Badge(
                     badgeStyle: badges.BadgeStyle(
-                      badgeColor: value_flexi_cart_controller.value.flexi_badge_background!,
+                      badgeColor: valueFlexiCartController.value.flexiBadgeBackground!,
                     ),
                     position: BadgePosition.topEnd(),//topStart(start: 16,),
                     badgeContent:
@@ -54,8 +54,8 @@ class flexi_cart extends StatelessWidget {
                             child:
                             FittedBox(
                               fit: BoxFit.contain,
-                              child:  Text("${value_flexi_cart_controller.value.flexi_cart_count}", style: TextStyle(
-                                color: value_flexi_cart_controller.value.flexi_badge_foreground,  //badge font color
+                              child:  Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
+                                color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
                                 //fontSize: 13 //badge font size
                               )
                               ),
@@ -76,7 +76,7 @@ class flexi_cart extends StatelessWidget {
     return Container(
         height: 35,width: 35,
         // alignment: Alignment.center,
-        child: value_flexi_cart_controller.value.flexi_cart_icon
+        child: valueFlexiCartController.value.flexiCartIcon
     );
   }
 
@@ -89,9 +89,9 @@ class flexi_cart extends StatelessWidget {
 
         },
         child: ValueListenableBuilder(
-          valueListenable: value_flexi_cart_controller,
+          valueListenable: valueFlexiCartController,
           builder: (context, varCartValue, child) {
-            return value_flexi_cart_controller.value.flexi_cart_count == 0 ?
+            return valueFlexiCartController.value.flexiCartCount == 0 ?
 
             _buildCart()
 
@@ -99,7 +99,7 @@ class flexi_cart extends StatelessWidget {
 
             badges.Badge(
                 badgeStyle: badges.BadgeStyle(
-                  badgeColor: value_flexi_cart_controller.value.flexi_badge_background!,
+                  badgeColor: valueFlexiCartController.value.flexiBadgeBackground!,
                 ),
                 position: BadgePosition.topEnd(),//topStart(start: 16,),
                 badgeContent:
@@ -109,8 +109,8 @@ class flexi_cart extends StatelessWidget {
                         child:
                         FittedBox(
                           fit: BoxFit.contain,
-                          child:  Text("${value_flexi_cart_controller.value.flexi_cart_count}", style: TextStyle(
-                            color: value_flexi_cart_controller.value.flexi_badge_foreground,  //badge font color
+                          child:  Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
+                            color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
                             //fontSize: 13 //badge font size
                           )
                           ),
@@ -127,40 +127,40 @@ class flexi_cart extends StatelessWidget {
   }
 
   void add(){
-    value_flexi_cart_controller.value.flexi_cart_count  =  value_flexi_cart_controller.value.flexi_cart_count! + 1;
-    value_flexi_cart_controller.notifyListeners();
+    valueFlexiCartController.value.flexiCartCount  =  valueFlexiCartController.value.flexiCartCount! + 1;
+    valueFlexiCartController.notifyListeners();
   }
 
   void remove(){
-    if(value_flexi_cart_controller.value.flexi_cart_count! > 0) {
-      value_flexi_cart_controller.value.flexi_cart_count = value_flexi_cart_controller.value.flexi_cart_count! - 1;
-      value_flexi_cart_controller.notifyListeners();
+    if(valueFlexiCartController.value.flexiCartCount! > 0) {
+      valueFlexiCartController.value.flexiCartCount = valueFlexiCartController.value.flexiCartCount! - 1;
+      valueFlexiCartController.notifyListeners();
     }
   }
 
   void update({required int newCartCount}){
-    value_flexi_cart_controller.value.flexi_cart_count  = newCartCount;
-    value_flexi_cart_controller.notifyListeners();
+    valueFlexiCartController.value.flexiCartCount  = newCartCount;
+    valueFlexiCartController.notifyListeners();
   }
 
   void clear(){
-    value_flexi_cart_controller.value.flexi_cart_count = 0;
-    value_flexi_cart_controller.notifyListeners();
+    valueFlexiCartController.value.flexiCartCount = 0;
+    valueFlexiCartController.notifyListeners();
   }
 }
 
-class flexi_cart_controller extends ChangeNotifier {
+class flexiCart_controller extends ChangeNotifier {
 
-    Icon? flexi_cart_icon = Icon(Icons.shopping_cart_outlined,color: Colors.black,);
-  Color? flexi_badge_background = Colors.blue;
-  Color? flexi_badge_foreground = Colors.white;
-  int? flexi_cart_count = 0;
+    Icon? flexiCartIcon = Icon(Icons.shopping_cart_outlined,color: Colors.black,);
+  Color? flexiBadgeBackground = Colors.blue;
+  Color? flexiBadgeForeground = Colors.white;
+  int? flexiCartCount = 0;
 
-  flexi_cart_controller({
-    this.flexi_cart_icon,
-    this.flexi_badge_background,
-    this.flexi_badge_foreground,
-    this.flexi_cart_count,
+  flexiCart_controller({
+    this.flexiCartIcon,
+    this.flexiBadgeBackground,
+    this.flexiBadgeForeground,
+    this.flexiCartCount,
 
     });
 
