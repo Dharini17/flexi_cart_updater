@@ -1,14 +1,14 @@
-## flexi_cart_updater
+## flexiCart_updater
 
 Easily manage cart icon with badge all over the ecommerce application & just update & display by calling a single line code.
 
 <table>
    <tr>
       <td>
-         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexi_cart_updater/master/assets/screenshot1.png">
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexiCart_updater/master/assets/screenshot1.png">
       </td>   
         <td>
-         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexi_cart_updater/master/assets/screenshot2.png">
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexiCart_updater/master/assets/screenshot2.png">
       </td> 
     </tr>
 </table>
@@ -25,7 +25,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  flexi_cart_updater: <latest_version>
+  flexiCart_updater: <latest_version>
 ```
 
 ## Usage
@@ -35,12 +35,13 @@ dependencies:
 1. Initialize only once in main file
 
         void main() async {
-        
-            flexi_cart.instance.initialize(
-            flexi_cart_icon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
-            flexi_badge_background: Colors.blue,
-            flexi_badge_foreground: Colors.white,
-            flexi_cart_count: 0);
+
+            flexiCart.instance.initialize(
+                    flexiCartIcon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
+                    flexiBadgeBackground: Colors.blue,
+                    flexiBadgeForeground: Colors.white,
+                    flexiCartCount: 0
+            );
             
             runApp(const MyApp());
 
@@ -48,24 +49,24 @@ dependencies:
 
              Column(
                 children: <Widget>[
-                          flexi_cart.instance.cart(onTap: (){ }),
+                          flexiCart.instance.cart(onTap: (){ }),
                              ...
      
 3. For increase cart value
 
-                flexi_cart.instance.add();
+                flexiCart.instance.add();
 
 4. For decrease cart value
 
-                flexi_cart.instance.remove();
+                flexiCart.instance.remove();
 
 
 5. Update cart value as per your convenient
 
-                flexi_cart.instance.update(newCartCount:5);
+                flexiCart.instance.update(newCartCount:5);
 
 6. For clear cart value
 
-                flexi_cart.instance.clear();
+                flexiCart.instance.clear();
 
 ```
