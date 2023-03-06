@@ -1,7 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
 
 ValueNotifier<flexi_cart_controller> value_flexi_cart_controller = ValueNotifier<flexi_cart_controller>(flexi_cart_controller());
