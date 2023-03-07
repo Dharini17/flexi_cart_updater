@@ -1,3 +1,8 @@
+## 1.0.1
+
+- bug fixing on cart widget ui
+
+
 ## 1.0.0
 
 - Just defined values once in app
