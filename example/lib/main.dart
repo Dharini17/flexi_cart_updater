@@ -4,7 +4,11 @@ import 'package:flexi_cart_updater/flexi_cart_updater.dart';
 
 void main() async {
 
-
+  flexiCart.instance.initialize(
+      flexiCartIcon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
+      flexiBadgeBackground: Colors.blue,
+      flexiBadgeForeground: Colors.white,
+      flexiCartCount: 10);
 
   runApp(const MyApp());
 }
@@ -41,12 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    flexiCart.instance.initialize(
-        flexiCartIcon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
-        flexiBadgeBackground: Colors.blue,
-        flexiBadgeForeground: Colors.white,
-        flexiCartCount: 10);
-
   }
 
   @override
@@ -56,8 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-
 
     return Scaffold(
       appBar: AppBar(
@@ -115,6 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text("Products list screen")
             ),
+
 
           ],
         ),
