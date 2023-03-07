@@ -44,6 +44,8 @@ class _productlistState extends State<productlist> {
 
             flexiCart.instance.cart(onTap: (){
 
+              //redirect to your cart list screen
+
             }),
 
             const SizedBox(height: 10,),

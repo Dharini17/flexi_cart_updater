@@ -5,7 +5,7 @@ import 'package:badges/badges.dart' as badges;
 
 ValueNotifier<flexiCart_controller> valueFlexiCartController = ValueNotifier<flexiCart_controller>(flexiCart_controller());
 
-class flexiCart extends StatelessWidget {
+class flexiCart{//} extends StatelessWidget {
 
   static flexiCart? _instance;
   flexiCart._();
@@ -24,52 +24,52 @@ class flexiCart extends StatelessWidget {
     valueFlexiCartController.notifyListeners();
   }
 
-  @override
-  Widget build(BuildContext context) {
-
-    return Padding(
-      padding: EdgeInsets.only(left: 5,right: 10),
-      child: Container(
-
-          child:
-
-          ValueListenableBuilder(
-            valueListenable: valueFlexiCartController,
-            builder: (context, varCartValue, child) {
-              return valueFlexiCartController.value.flexiCartCount == 0 ?
-
-                _buildCart()
-
-                    :
-
-                badges.Badge(
-                    badgeStyle: badges.BadgeStyle(
-                      badgeColor: valueFlexiCartController.value.flexiBadgeBackground!,
-                    ),
-                    position: BadgePosition.topEnd(),//topStart(start: 16,),
-                    badgeContent:
-                    SizedBox(
-                        width: 15, height: 15, //badge size
-                        child:Center(  //aligh badge content to center
-                            child:
-                            FittedBox(
-                              fit: BoxFit.contain,
-                              child:  Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
-                                color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
-                                //fontSize: 13 //badge font size
-                              )
-                              ),
-                            )
-                        )
-                    ),
-                    child: _buildCart()
-                );
-            },
-          ),
-
-      ),
-    );
-  }
+  // @override
+  // Widget build(BuildContext context) {
+  //
+  //   return Padding(
+  //     padding: EdgeInsets.only(left: 5,right: 10),
+  //     child: Container(
+  //
+  //         child:
+  //
+  //         ValueListenableBuilder(
+  //           valueListenable: valueFlexiCartController,
+  //           builder: (context, varCartValue, child) {
+  //             return valueFlexiCartController.value.flexiCartCount == 0 ?
+  //
+  //               _buildCart()
+  //
+  //                   :
+  //
+  //               badges.Badge(
+  //                   badgeStyle: badges.BadgeStyle(
+  //                     badgeColor: valueFlexiCartController.value.flexiBadgeBackground!,
+  //                   ),
+  //                   position: BadgePosition.topEnd(),//topStart(start: 16,),
+  //                   badgeContent:
+  //                   SizedBox(
+  //                       width: 15, height: 15, //badge size
+  //                       child:Center(  //aligh badge content to center
+  //                           child:
+  //                           FittedBox(
+  //                             fit: BoxFit.contain,
+  //                             child:  Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
+  //                               color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
+  //                               //fontSize: 13 //badge font size
+  //                             )
+  //                             ),
+  //                           )
+  //                       )
+  //                   ),
+  //                   child: _buildCart()
+  //               );
+  //           },
+  //         ),
+  //
+  //     ),
+  //   );
+  // }
 
   Widget _buildCart(){
 
@@ -87,6 +87,8 @@ class flexiCart extends StatelessWidget {
       child: InkWell(
         onTap: (){
 
+          onTap();
+
         },
         child: ValueListenableBuilder(
           valueListenable: valueFlexiCartController,
@@ -103,19 +105,10 @@ class flexiCart extends StatelessWidget {
                 ),
                 position: BadgePosition.topEnd(),//topStart(start: 16,),
                 badgeContent:
-                SizedBox(
-                    width: 15, height: 15, //badge size
-                    child:Center(  //aligh badge content to center
-                        child:
-                        FittedBox(
-                          fit: BoxFit.contain,
-                          child:  Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
-                            color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
-                            //fontSize: 13 //badge font size
-                          )
-                          ),
-                        )
-                    )
+                Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
+                  color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
+                  //fontSize: 13 //badge font size
+                )
                 ),
                 child: _buildCart()
             );
@@ -147,11 +140,12 @@ class flexiCart extends StatelessWidget {
     valueFlexiCartController.value.flexiCartCount = 0;
     valueFlexiCartController.notifyListeners();
   }
+
 }
 
 class flexiCart_controller extends ChangeNotifier {
 
-    Icon? flexiCartIcon = Icon(Icons.shopping_cart_outlined,color: Colors.black,);
+  Icon? flexiCartIcon = Icon(Icons.shopping_cart_outlined,color: Colors.black,);
   Color? flexiBadgeBackground = Colors.blue;
   Color? flexiBadgeForeground = Colors.white;
   int? flexiCartCount = 0;
