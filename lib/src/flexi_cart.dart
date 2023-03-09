@@ -24,53 +24,6 @@ class flexiCart{//} extends StatelessWidget {
     valueFlexiCartController.notifyListeners();
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //
-  //   return Padding(
-  //     padding: EdgeInsets.only(left: 5,right: 10),
-  //     child: Container(
-  //
-  //         child:
-  //
-  //         ValueListenableBuilder(
-  //           valueListenable: valueFlexiCartController,
-  //           builder: (context, varCartValue, child) {
-  //             return valueFlexiCartController.value.flexiCartCount == 0 ?
-  //
-  //               _buildCart()
-  //
-  //                   :
-  //
-  //               badges.Badge(
-  //                   badgeStyle: badges.BadgeStyle(
-  //                     badgeColor: valueFlexiCartController.value.flexiBadgeBackground!,
-  //                   ),
-  //                   position: BadgePosition.topEnd(),//topStart(start: 16,),
-  //                   badgeContent:
-  //                   SizedBox(
-  //                       width: 15, height: 15, //badge size
-  //                       child:Center(  //aligh badge content to center
-  //                           child:
-  //                           FittedBox(
-  //                             fit: BoxFit.contain,
-  //                             child:  Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
-  //                               color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
-  //                               //fontSize: 13 //badge font size
-  //                             )
-  //                             ),
-  //                           )
-  //                       )
-  //                   ),
-  //                   child: _buildCart()
-  //               );
-  //           },
-  //         ),
-  //
-  //     ),
-  //   );
-  // }
-
   Widget _buildCart(){
 
     return valueFlexiCartController.value.flexiCartIcon!;
@@ -122,42 +75,6 @@ class flexiCart{//} extends StatelessWidget {
         ),
       )
     ;
-
-
-   return Padding(
-      padding: EdgeInsets.only(left: 5,right: 10),
-      child: InkWell(
-        onTap: (){
-
-          onTap();
-
-        },
-        child: ValueListenableBuilder(
-          valueListenable: valueFlexiCartController,
-          builder: (context, varCartValue, child) {
-            return valueFlexiCartController.value.flexiCartCount == 0 ?
-
-            _buildCart()
-
-                :
-
-            badges.Badge(
-                badgeStyle: badges.BadgeStyle(
-                  badgeColor: valueFlexiCartController.value.flexiBadgeBackground!,
-                ),
-                position: BadgePosition.topEnd(),//topStart(start: 16,),
-                badgeContent:
-                Text("${valueFlexiCartController.value.flexiCartCount}", style: TextStyle(
-                  color: valueFlexiCartController.value.flexiBadgeForeground,  //badge font color
-                  //fontSize: 13 //badge font size
-                )
-                ),
-                child: _buildCart()
-            );
-          },
-        ),
-      ),
-    );
 
   }
 
