@@ -1,7 +1,6 @@
 import 'package:flexi_cart_updater/flexi_cart_updater.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 class productlist extends StatefulWidget {
 
@@ -32,6 +31,9 @@ class _productlistState extends State<productlist> {
         title: Text("product list"),
         actions: [
 
+         flexiCart.instance.cart(onTap: (){
+            print("cart clicked");
+          })
         ],
       ),
       body: Center(
@@ -45,6 +47,7 @@ class _productlistState extends State<productlist> {
             flexiCart.instance.cart(onTap: (){
 
               //redirect to your cart list screen
+              print("cart icon clicked");
 
             }),
 

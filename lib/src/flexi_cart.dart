@@ -73,14 +73,56 @@ class flexiCart{//} extends StatelessWidget {
 
   Widget _buildCart(){
 
-    return Container(
-        height: 35,width: 35,
-        // alignment: Alignment.center,
-        child: valueFlexiCartController.value.flexiCartIcon
-    );
+    return valueFlexiCartController.value.flexiCartIcon!;
   }
 
   Widget cart({required Function onTap}){
+
+    return
+
+      GestureDetector(
+        onTap: (){
+          onTap();
+        },
+        child: ValueListenableBuilder(
+            valueListenable: valueFlexiCartController,
+            builder: (context, varCartValue, child) {
+              return valueFlexiCartController.value.flexiCartCount == 0 ?
+
+              _buildCart() :
+
+              Container(
+                alignment: Alignment.center,
+                child: badges.Badge(
+                  // position: badges.BadgePosition.topEnd(top: -10, end: -12),
+                    showBadge: true,
+                    ignorePointer: false,
+                    onTap: () {
+
+                      onTap();
+
+                    },
+                    badgeContent:
+                    Text("${valueFlexiCartController.value.flexiCartCount}",
+                        style: TextStyle(
+                            color: valueFlexiCartController.value
+                                .flexiBadgeForeground, //badge font color
+                            fontSize: 13 //badge font size
+                        )
+                    ),
+
+                    badgeStyle: badges.BadgeStyle(
+                      badgeColor: valueFlexiCartController.value
+                          .flexiBadgeBackground!,
+                    ),
+                    child: _buildCart()
+                ),
+              );
+            }
+        ),
+      )
+    ;
+
 
    return Padding(
       padding: EdgeInsets.only(left: 5,right: 10),

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'flexi_cart_updater',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -73,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             flexiCart.instance.cart(onTap: (){
 
               //redirect to your cart list screen
+              print("cart icon clicked");
 
             }),
 
