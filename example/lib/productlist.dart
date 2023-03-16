@@ -31,6 +31,8 @@ class _productlistState extends State<productlist> {
         title: Text("product list"),
         actions: [
 
+          Icon(Icons.search,color: Colors.black,),
+
          flexiCart.instance.cart(onTap: (){
             print("cart clicked");
           })

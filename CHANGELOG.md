@@ -1,8 +1,8 @@
-## 1.0.2
+## 1.0.3
 
 - bug fixing on widget alignment
 
-## 1.0.1
+## 1.0.1  & 1.0.2
 
 - bug fixing on cart widget ui
 

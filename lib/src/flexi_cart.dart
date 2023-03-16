@@ -44,33 +44,31 @@ class flexiCart{//} extends StatelessWidget {
 
               _buildCart() :
 
-              Container(
-                alignment: Alignment.center,
-                child: badges.Badge(
-                  // position: badges.BadgePosition.topEnd(top: -10, end: -12),
-                    showBadge: true,
-                    ignorePointer: false,
-                    onTap: () {
-
-                      onTap();
-
-                    },
-                    badgeContent:
-                    Text("${valueFlexiCartController.value.flexiCartCount}",
-                        style: TextStyle(
-                            color: valueFlexiCartController.value
-                                .flexiBadgeForeground, //badge font color
-                            fontSize: 13 //badge font size
-                        )
-                    ),
-
-                    badgeStyle: badges.BadgeStyle(
-                      badgeColor: valueFlexiCartController.value
-                          .flexiBadgeBackground!,
-                    ),
-                    child: _buildCart()
-                ),
+              Center(
+                child: Padding(
+                  padding:EdgeInsets.only(left: 5,right:10),
+                  child:badges.Badge(
+                      position: badges.BadgePosition.topEnd(top: -12, end: -10),
+                      badgeContent: Center(
+                        child: Text(
+                            "${valueFlexiCartController.value.flexiCartCount}",
+                            style: TextStyle(
+                                color: valueFlexiCartController.value
+                                    .flexiBadgeForeground, //badge font color
+                                fontSize: 11 //badge font size
+                            )
+                        ),
+                      ),
+                      badgeStyle: badges.BadgeStyle(
+                        badgeColor: valueFlexiCartController.value
+                            .flexiBadgeBackground!,
+                      ),
+                      child:
+                      _buildCart()
+                  ),
+                )
               );
+
             }
         ),
       )
