@@ -1,14 +1,13 @@
-import 'package:example/productlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flexi_cart_updater/flexi_cart_updater.dart';
 
-void main() async {
+void main() {
 
-  flexiCart.instance.initialize(
-      flexiCartIcon: Icon(Icons.shopping_cart_outlined,color: Colors.black,),
-      flexiBadgeBackground: Colors.blue,
-      flexiBadgeForeground: Colors.white,
-      flexiCartCount: 10);
+  FlexiCart.initFlexiCart(
+      child: const Icon(Icons.shopping_cart_outlined,size: 25,color: Colors.black54,),
+      cartCount: 2,
+      cartBadgeTextColor: Colors.white,
+      cartBadgeBackgroundColor: Colors.blueAccent);
 
   runApp(const MyApp());
 }
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'flexi_cart_updater demo'),
+      home: const MyHomePage(title: 'flexi_cart_updater demo'),
     );
   }
 }
@@ -43,17 +42,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -61,6 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+
+          Icon(Icons.search,size: 25,color: Colors.black54,),
+
+          FlexiCart.cart(onTap: (){
+            print("Navigate to your cart screen here");
+          }),
+        ],
       ),
       body: Center(
 
@@ -71,49 +67,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
           children: <Widget>[
 
-            flexiCart.instance.cart(onTap: (){
-
-              //redirect to your cart list screen
-              print("cart icon clicked");
-
+            FlexiCart.cart(onTap: (){
+              print("Navigate to your cart screen here");
             }),
 
-
             ElevatedButton(
-                onPressed: (){
-
-                  flexiCart.instance.add();
-
-                },
+                onPressed: ()=>FlexiCart.add(),
                 child: Text("Add to Cart")
             ),
 
             const SizedBox(height: 10,),
 
             ElevatedButton(
-                onPressed: (){
-
-                  flexiCart.instance.remove();
-
-                },
+                onPressed: ()=>FlexiCart.remove(),
                 child: Text("Remove from Cart")
             ),
 
             const SizedBox(height: 10,),
 
             ElevatedButton(
-                onPressed: (){
-
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              productlist()));
-
-                },
-                child: Text("Products list screen")
+                onPressed: ()=>FlexiCart.clear(),
+                child: Text("Clear cart")
             ),
 
+            const SizedBox(height: 10,),
+
+            ElevatedButton(
+                onPressed: ()=>FlexiCart.update(newCartCount: 4),
+                child: Text("update cart with new value 4")
+            ),
 
           ],
         ),

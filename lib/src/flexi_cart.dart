@@ -1,118 +1,82 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
-ValueNotifier<flexiCart_controller> valueFlexiCartController = ValueNotifier<flexiCart_controller>(flexiCart_controller());
+ValueNotifier<int> flexiCartCount = ValueNotifier<int>(0);
+ValueNotifier<Widget> flexiCartWidget = ValueNotifier<Widget>(const SizedBox());
+ValueNotifier<Color> flexiCartCountColor = ValueNotifier<Color>(const Color(0xff000000));
+ValueNotifier<Color> flexiCartCountBackgroundColor = ValueNotifier<Color>(const Color(0xff000000));
 
-class flexiCart{//} extends StatelessWidget {
+class FlexiCart{
 
-  static flexiCart? _instance;
-  flexiCart._();
-  static flexiCart get instance => _instance ??= flexiCart._();
-
-  initialize({required Icon? flexiCartIcon,
-      required Color? flexiBadgeBackground,
-      required Color? flexiBadgeForeground,
-      required int? flexiCartCount}){
-
-    valueFlexiCartController.value.flexiCartIcon = flexiCartIcon;
-    valueFlexiCartController.value.flexiBadgeBackground = flexiBadgeBackground;
-    valueFlexiCartController.value.flexiBadgeForeground = flexiBadgeForeground;
-    valueFlexiCartController.value.flexiCartCount = flexiCartCount;
-
-    valueFlexiCartController.notifyListeners();
+  static initFlexiCart({
+    required Widget child,
+    required int cartCount,
+    required Color cartBadgeTextColor,
+    required Color cartBadgeBackgroundColor,
+  }){
+    flexiCartCount.value = cartCount;flexiCartCount.notifyListeners();
+    flexiCartWidget.value = child;flexiCartWidget.notifyListeners();
+    flexiCartCountColor.value = cartBadgeTextColor;flexiCartCountColor.notifyListeners();
+    flexiCartCountBackgroundColor.value = cartBadgeBackgroundColor;flexiCartCountBackgroundColor.notifyListeners();
   }
 
-  Widget _buildCart(){
-
-    return valueFlexiCartController.value.flexiCartIcon!;
-  }
-
-  Widget cart({required Function onTap}){
+  static Widget cart({required Function onTap}){
 
     return
 
-      GestureDetector(
-        onTap: (){
-          onTap();
-        },
-        child: ValueListenableBuilder(
-            valueListenable: valueFlexiCartController,
-            builder: (context, varCartValue, child) {
-              return valueFlexiCartController.value.flexiCartCount == 0 ?
+      Center(
+        child: InkWell(
+          onTap:()=>onTap(),
+          child:
 
-              _buildCart() :
+          Padding(
+            padding: const EdgeInsets.all(5),
+            child: ValueListenableBuilder(
+                valueListenable: flexiCartCount,
+                builder: (context, flexiCartCountValue, child) {
+                  return
 
-              Center(
-                child: Padding(
-                  padding:EdgeInsets.only(left: 5,right:10),
-                  child:badges.Badge(
-                      position: badges.BadgePosition.topEnd(top: -12, end: -10),
-                      badgeContent: Center(
-                        child: Text(
-                            "${valueFlexiCartController.value.flexiCartCount}",
-                            style: TextStyle(
-                                color: valueFlexiCartController.value
-                                    .flexiBadgeForeground, //badge font color
-                                fontSize: 11 //badge font size
+                    flexiCartCountValue == 0 ?
+                    flexiCartWidget.value :
+
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: badges.Badge(
+                          position: badges.BadgePosition.topEnd(top: -12, end: -14),
+                        badgeContent: Text('$flexiCartCountValue',style: TextStyle(fontSize: 13,color: flexiCartCountColor.value),),
+                        child: flexiCartWidget.value,
+                            badgeStyle: badges.BadgeStyle(
+                            badgeColor: flexiCartCountBackgroundColor.value,
                             )
-                        ),
                       ),
-                      badgeStyle: badges.BadgeStyle(
-                        badgeColor: valueFlexiCartController.value
-                            .flexiBadgeBackground!,
-                      ),
-                      child:
-                      _buildCart()
-                  ),
-                )
-              );
-
-            }
+                    );
+                }
+            ),
+          ),
         ),
-      )
-    ;
-
+      );
   }
 
-  void add(){
-    valueFlexiCartController.value.flexiCartCount  =  valueFlexiCartController.value.flexiCartCount! + 1;
-    valueFlexiCartController.notifyListeners();
+  static add(){
+    flexiCartCount.value  =  flexiCartCount.value! + 1;
+    flexiCartCount.notifyListeners();
   }
 
-  void remove(){
-    if(valueFlexiCartController.value.flexiCartCount! > 0) {
-      valueFlexiCartController.value.flexiCartCount = valueFlexiCartController.value.flexiCartCount! - 1;
-      valueFlexiCartController.notifyListeners();
+  static remove(){
+    if(flexiCartCount.value! > 0) {
+      flexiCartCount.value = flexiCartCount.value! - 1;
+      flexiCartCount.notifyListeners();
     }
   }
 
-  void update({required int newCartCount}){
-    valueFlexiCartController.value.flexiCartCount  = newCartCount;
-    valueFlexiCartController.notifyListeners();
+  static update({required int newCartCount}){
+    flexiCartCount.value  = newCartCount;
+    flexiCartCount.notifyListeners();
   }
 
-  void clear(){
-    valueFlexiCartController.value.flexiCartCount = 0;
-    valueFlexiCartController.notifyListeners();
+  static clear(){
+    flexiCartCount.value = 0;
+    flexiCartCount.notifyListeners();
   }
-
-}
-
-class flexiCart_controller extends ChangeNotifier {
-
-  Icon? flexiCartIcon = Icon(Icons.shopping_cart_outlined,color: Colors.black,);
-  Color? flexiBadgeBackground = Colors.blue;
-  Color? flexiBadgeForeground = Colors.white;
-  int? flexiCartCount = 0;
-
-  flexiCart_controller({
-    this.flexiCartIcon,
-    this.flexiBadgeBackground,
-    this.flexiBadgeForeground,
-    this.flexiCartCount,
-
-    });
-
 }
