@@ -6,8 +6,7 @@ Easily manage cart icon with badge all over the eCommerce application & just upd
    <tr>
       <td>
          <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexi_cart_updater/master/assets/screenshot1.png">
-      </td>   
-   
+      </td>
     </tr>
 </table>
 
