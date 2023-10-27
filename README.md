@@ -22,7 +22,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  flexiCart_updater: ^1.0.4
+  flexiCart_updater: ^1.0.5
 ```
 
 ## Usage
